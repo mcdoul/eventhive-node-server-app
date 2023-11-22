@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://root:root@eventhivedatabase.j1rwzcn.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken"
+}
