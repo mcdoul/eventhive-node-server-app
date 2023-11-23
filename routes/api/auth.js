@@ -1,11 +1,12 @@
-const express = require("express");
+import express from "express";
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import config from 'config';
+import { check, validationResult } from 'express-validator';
+import User from '../../models/User.js';
+import auth from '../../middleware/auth.js';
+
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const auth = require('../../middleware/auth');
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const {check, validationResult} = require('express-validator');
-const User = require('../../models/User');
 
 router.get('/', auth, async (req, res) => {
     try {
@@ -17,21 +18,19 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-
 router.post('/', [
     check('email', 'please include a valid email').isEmail(),
     check('password', 'Password is required').exists()
 ],
-
 async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({errors: errors.array()});
     }
 
-    const {email, password} = req.body;
+    const { email, password } = req.body;
     try {
-        let user = await User.findOne({email});
+        let user = await User.findOne({ email });
 
         if (!user) {
             return res.status(400).json({errors: [{msg: 'Invalid Credentials'}]});
@@ -40,15 +39,14 @@ async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
-            return res.status(400).json({errors: [{msg : 'Invalid Credentials'}]})
+            return res.status(400).json({errors: [{msg: 'Invalid Credentials'}]})
         }
-
 
         const payload = {
             user: {
                 id: user.id
             }
-        }
+        };
 
         jwt.sign(
             payload, 
@@ -57,12 +55,13 @@ async (req, res) => {
             (err, token) => {
                 if (err) throw err;
                 res.json({token});
-            });
+            }
+        );
 
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
     }
-})
+});
 
-module.exports = router;
+export default router;
