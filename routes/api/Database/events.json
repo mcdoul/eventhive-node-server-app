@@ -1,0 +1,12 @@
+[
+    { "_id": "1",
+      "name": "Farmers' Market", "number": "Redmond", "startDate": "2023-01-10", "endDate": "2023-05-15"
+    },
+    { "_id": "2",
+      "name": "Doodles' Day", "number": "Seattle", "startDate": "2023-01-10", "endDate": "2023-05-15"
+    },
+    { "_id": "3",
+      "name": "80's rock party", "number": "Kirkland", "startDate": "2023-01-10", "endDate": "2023-05-15"
+    }
+]
+  
