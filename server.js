@@ -10,6 +10,7 @@ import postsRoutes from './routes/api/posts.js';
 const app = express();
 
 connectDB();
+app.use(cors());
 
 app.use(cors());
 app.use(express.json({ extended: false }));
@@ -18,7 +19,7 @@ app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/posts', postsRoutes);
-EventRoutes(app); 
+EventRoutes(app);
 
 app.get('/', (req, res) => res.send('Welcome to EventHive, API is running!'));
 
