@@ -1,31 +1,28 @@
-import express, { json } from 'express';
-// import connectDB from '../config/db';
+import express from 'express';
+import cors from 'cors';
+import EventRoutes from './Events/routes.js';
 import connectDB from './config/db.js';
 import usersRoutes from './routes/api/users.js';
 import authRoutes from './routes/api/auth.js';
-// import profileRoutes from './routes/api/profile.js';
-// import postsRoutes from './routes/api/posts.js';
-import cors from 'cors';
+import profileRoutes from './routes/api/profile.js';
+import postsRoutes from './routes/api/posts.js';
 
 const app = express();
 
 connectDB();
 app.use(cors());
 
-app.use(json({ extended: false }));
-
-app.get('/', (req, res) => res.send('API Running'));
-
-// app.use('/api/users', require('./routes/api/users').default);
-// app.use('/api/auth', require('./routes/api/auth').default);
-// app.use('/api/profile', require('./routes/api/profile').default);
-// app.use('/api/posts', require('./routes/api/posts').default);
+app.use(cors());
+app.use(express.json({ extended: false }));
 
 app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoutes);
-// app.use('/api/profile', profileRoutes);
-// app.use('/api/posts', postsRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/posts', postsRoutes);
+EventRoutes(app);
 
-const PORT = process.env.PORT || 5000;
+app.get('/', (req, res) => res.send('Welcome to EventHive, API is running!'));
+
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

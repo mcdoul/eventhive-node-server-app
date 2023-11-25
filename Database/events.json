@@ -1,0 +1,90 @@
+[
+  {
+    "_id": "1",
+    "name": "Farmers' Market",
+    "location": "Redmond",
+    "startDate": "2023-04-10",
+    "endDate": "2023-05-15",
+    "organizer_id": 1,
+    "attendance_id": [2, 3],
+    "price": "0.0",
+    "description": "A vibrant gathering of local farmers and artisans"
+  },
+  {
+    "_id": "2",
+    "name": "Doodles' Day",
+    "location": "Seattle",
+    "startDate": "2023-01-10",
+    "endDate": "2023-05-15",
+    "organizer_id": 1,
+    "attendance_id": [4, 5],
+    "price": "0.0",
+    "description": "A fun-filled day with dogs!"
+  },
+  {
+    "_id": "3",
+    "name": "80's Rock Party",
+    "location": "Kirkland",
+    "startDate": "2023-01-10",
+    "endDate": "2023-05-15",
+    "organizer_id": 2,
+    "attendance_id": [6, 7, 8],
+    "price": "20.0",
+    "description": "Relive the magic of the 80's with classic rock music and dance"
+  },
+  {
+    "_id": "4",
+    "name": "Innovate Tech Conference",
+    "location": "San Francisco",
+    "startDate": "2023-06-01",
+    "endDate": "2023-06-03",
+    "organizer_id": 2,
+    "attendance_id": [5, 6, 7],
+    "price": "299.99",
+    "description": "An immersive experience with the latest in tech and innovation."
+  },
+  {
+    "_id": "5",
+    "name": "Summer Soundfest",
+    "location": "Miami",
+    "startDate": "2023-07-20",
+    "endDate": "2023-07-22",
+    "organizer_id": 3,
+    "attendance_id": [8, 9, 10],
+    "price": "159.99",
+    "description": "A three-day music festival featuring top artists and DJs."
+  },
+  {
+    "_id": "6",
+    "name": "Contemporary Art Expo",
+    "location": "New York",
+    "startDate": "2023-08-15",
+    "endDate": "2023-08-20",
+    "organizer_id": 4,
+    "attendance_id": [11, 12],
+    "price": "49.99",
+    "description": "Showcasing modern art from renowned global artists."
+  },
+  {
+    "_id": "7",
+    "name": "Gourmet Delights",
+    "location": "Napa Valley",
+    "startDate": "2023-09-10",
+    "endDate": "2023-09-12",
+    "organizer_id": 5,
+    "attendance_id": [13, 14, 15],
+    "price": "89.99",
+    "description": "A culinary journey with exquisite food and wine pairings."
+  },
+  {
+    "_id": "8",
+    "name": "Wild Outdoors Expo",
+    "location": "Colorado Springs",
+    "startDate": "2023-10-05",
+    "endDate": "2023-10-07",
+    "organizer_id": 6,
+    "attendance_id": [16, 17],
+    "price": "19.99",
+    "description": "Exploring outdoor gear and adventure sports."
+  }
+]

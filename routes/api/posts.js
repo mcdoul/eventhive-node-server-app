@@ -1,9 +1,10 @@
-import { Router } from 'express';
-const router = Router();
+import express from 'express';
+
+const postsRoutes = express.Router();
 
 // @route      GET  api/posts
 // @desc       Test route
 // @access     Public
-router.get('/', (req, res) => res.send('Posts route'));
+postsRoutes.get('/', (req, res) => res.send('Posts route'));
 
-export default router;
+export default postsRoutes;

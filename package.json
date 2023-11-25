@@ -1,15 +1,15 @@
 {
+  "type": "module",
   "name": "eventhive-node-server-app",
   "version": "1.0.0",
   "description": "eventhive node server app for cs5610 final group project",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "node app.js",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "type": "module",
   "author": "Haifei",
   "license": "MIT",
   "dependencies": {
@@ -20,7 +20,7 @@
     "express-validator": "^7.0.1",
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.0",
+    "mongoose": "^8.0.1",
     "react-router-dom": "^6.19.0",
     "request": "^2.88.2"
   },
