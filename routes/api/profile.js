@@ -14,8 +14,6 @@ router.get('/:email', async(req, res) => {
             return res.status(400).json({errors: [{msg: 'Profile not found'}]});
         }
         
-        // res.send("profile found");
-        console.log("profile found");
         res.json(profile);
         
     }catch(err){
@@ -47,7 +45,6 @@ router.put('/:email', async (req, res) => {
 
     // Update the document in MongoDB
     const result = await ProfileModel.findOneAndUpdate({"email":email}, updatedData, { new: true });
-
     if (!result) {
       return res.status(404).json({ error: 'Document not found' });
     }
