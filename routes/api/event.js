@@ -1,4 +1,4 @@
-import Database from "../Database/index.js";
+import Database from "../../Database/index.js";
 
 function EventRoutes(app) {
     app.get("/api/events", (req, res) => {
@@ -30,12 +30,14 @@ function EventRoutes(app) {
         event.attendance_id = req.body.attendance_id;
         event.price = req.body.price;
         event.description = req.body.description;
+        event.comments = req.body.comments;
+        event.registered = req.body.registered;
     
         res.sendStatus(200);
       } else {
         res.sendStatus(404); 
       }
-    }); 
+    });
 
     app.delete("/api/events/:eid", (req, res) => {
         const { eid } = req.params;
@@ -53,6 +55,21 @@ function EventRoutes(app) {
       Database.events.push(event);
       res.send(event);
     });
+
+    app.post('/api/events/:eventId/comments', (req, res) => {
+      const { eventId } = req.params;
+      const newComment = { 
+        ...req.body,
+        _id: new Date().getTime().toString() 
+      };
+      const event = Database.events.find(event => event._id === eventId);
+      if (!event) {
+        return res.status(404).send('Event not found');
+      }
+      event.comments.push(newComment);
+      res.send(newComment);
+    });
+
     
 }
 export default EventRoutes;
