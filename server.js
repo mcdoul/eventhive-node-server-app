@@ -1,11 +1,11 @@
 import express from 'express';
 import cors from 'cors';
-import EventRoutes from './Events/routes.js';
 import connectDB from './config/db.js';
 import usersRoutes from './routes/api/users.js';
 import authRoutes from './routes/api/auth.js';
 import profileRoutes from './routes/api/profile.js';
 import postsRoutes from './routes/api/posts.js';
+import EventRoutes from './routes/api/event.js';
 
 const app = express();
 
