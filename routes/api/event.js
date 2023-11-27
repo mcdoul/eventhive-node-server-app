@@ -17,10 +17,10 @@ function EventRoutes(app) {
         res.send(event);
     });  
 
-    app.put("/api/events/:eid", (req, res) => {
+    app.put("/api/events/edit/:eid", (req, res) => {
       const { eid } = req.params;
-      const event = db.events.find((e) => e._id === eid);
-    
+      const event =  Database.events.find((e) => e._id === eid);
+      
       if (event) {
         event.name = req.body.name;
         event.location = req.body.location;
@@ -50,7 +50,7 @@ function EventRoutes(app) {
     app.post("/api/events", (req, res) => {
       const event = { 
         ...req.body,
-        _id: new Date().getTime().toString() 
+        _id: new Date().getTime().toString(), 
       };
       Database.events.push(event);
       res.send(event);
