@@ -18,8 +18,7 @@
         "userId": 3,
         "content": "Great variety of organic products. Will visit again!"
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "2",
@@ -40,8 +39,7 @@
         "userId": 5,
         "content": "The best dog-friendly event in the city."
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "3",
@@ -62,8 +60,7 @@
         "userId": 7,
         "content": "Took me right back to the 80s. Loved every minute!"
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "4",
@@ -84,8 +81,7 @@
         "userId": 6,
         "content": "Networking opportunities were great, and the talks were very enlightening."
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "5",
@@ -106,8 +102,7 @@
         "userId": 9,
         "content": "Best music festival I've been to this year!"
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "6",
@@ -128,8 +123,7 @@
         "userId": 12,
         "content": "A must-visit for any art enthusiast."
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "7",
@@ -150,8 +144,7 @@
         "userId": 14,
         "content": "An unforgettable gastronomic experience."
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "8",
@@ -172,7 +165,6 @@
         "userId": 17,
         "content": "Loved the workshops and demos on adventure sports!"
       }
-    ],
-    "registered": []
+    ]
   }
 ]
