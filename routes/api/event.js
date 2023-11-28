@@ -31,7 +31,6 @@ function EventRoutes(app) {
         event.price = req.body.price;
         event.description = req.body.description;
         event.comments = req.body.comments;
-        event.registered = req.body.registered;
     
         res.sendStatus(200);
       } else {
@@ -56,18 +55,32 @@ function EventRoutes(app) {
       res.send(event);
     });
 
-    app.post('/api/events/:eventId/comments', (req, res) => {
-      const { eventId } = req.params;
-      const newComment = { 
-        ...req.body,
-        _id: new Date().getTime().toString() 
-      };
-      const event = Database.events.find(event => event._id === eventId);
-      if (!event) {
-        return res.status(404).send('Event not found');
+    app.post('/api/events/:eid/register', (req, res) => {
+      const { eid } = req.params;
+      const userEmail = req.body.userEmail;
+    
+      const event = Database.events.find(event => event._id === eid);
+      if (event) {
+        if (!event.attendance_id.includes(userEmail)) {
+          event.attendance_id.push(userEmail);
+        }
+        res.status(200).send('User registered successfully');
+      } else {
+        res.status(404).send('Event not found');
       }
-      event.comments.push(newComment);
-      res.send(newComment);
+    });
+    
+    app.post('/api/events/:eid/comments', (req, res) => {
+      const { eid } = req.params;
+      const { userEmail, content } = req.body; 
+    
+      const event = Database.events.find(event => event._id === eid);
+      if (event) {
+        event.comments.push({ userEmail, content }); 
+        res.status(200).send('Comment added successfully');
+      } else {
+        res.status(404).send('Event not found');
+      }
     });
 
     
