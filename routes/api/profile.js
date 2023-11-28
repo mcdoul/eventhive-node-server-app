@@ -55,6 +55,76 @@ router.put('/:email', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+// Api for following a user
+router.put('/:email/follow', async (req, res) => {
+    try {
+        const followerEmail = req.body.followerEmail;
+        const followerName = req.body.followerName;
+        const followingEmail = req.body.followingEmail;
+        const followingName = req.body.followingName;
+
+
+        const followerExists = await ProfileModel.exists({
+            email: followingEmail,
+            'followers.email': followerEmail
+          });
+      
+          // Check if the user being followed is already followed by the follower
+          const followingExists = await ProfileModel.exists({
+            email: followerEmail,
+            'following.email': followingEmail
+          });
+
+        // Update the follower's following list
+        if(!followerExists){
+            const followResult = await ProfileModel.findOneAndUpdate(
+                { email: followerEmail },
+                { $addToSet: { following: { name: followingName, email: followingEmail } } },
+            );
+            if (!followResult) {
+                return res.status(404).json({ error: 'Unable to add user to following list' });
+            }
+            // Update the following user's followers list
+            await ProfileModel.findOneAndUpdate(
+                { email: followingEmail },
+                { $addToSet: { followers: { name: followerName, email: followerEmail } } }
+            );
+        }
+        
+
+        res.json({ message: 'Followed successfully' });
+    } catch (error) {
+        console.error('Error following user:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.put('/:email/unfollow', async (req, res) => {
+    try {
+        const followerEmail = req.body.followerEmail;
+        const followerName = req.body.followerName;
+        const followingEmail = req.body.followingEmail;
+        const followingName = req.body.followingName;
+        // Update the follower's following list
+        const followResult = await ProfileModel.findOneAndUpdate(
+            { email: followerEmail },
+            { $pull: { following: { name: followingName, email: followingEmail } } },
+        );
+        if (!followResult) {
+            return res.status(404).json({ error: 'Unable to remove user to following list' });
+        }
+        // Update the following user's followers list
+        await ProfileModel.findOneAndUpdate(
+            { email: followingEmail },
+            { $pull: { followers: { name: followerName, email: followerEmail } } }
+        );
+
+        res.json({ message: 'Unfollowed successfully' });
+    } catch (error) {
+        console.error('Error unfollowing user:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 router.delete('/:email', async(req, res) => {
     try{
         const profile = await ProfileModel.findOneAndDelete({email: req.params.email});

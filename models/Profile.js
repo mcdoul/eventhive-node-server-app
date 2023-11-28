@@ -30,7 +30,29 @@ const profileSchema = new mongoose.Schema({
     address2:{
         type: String,
         required: false
-    }
+    },
+
+    followers: [{
+        name: {
+            type: String,
+            required: false,
+        },
+        email: {
+            type: String,
+            required: false,
+        },
+    }],
+
+    following: [{
+        name: {
+            type: String,
+            required: false,
+        },
+        email: {
+            type: String,
+            required: false,
+        },
+    }],
     },
     {collection: 'profile'}
     
