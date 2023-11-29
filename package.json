@@ -20,7 +20,7 @@
     "express-validator": "^7.0.1",
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.1",
+    "mongoose": "^8.0.2",
     "react-router-dom": "^6.19.0",
     "request": "^2.88.2"
   },
