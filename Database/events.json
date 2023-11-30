@@ -1,178 +1,178 @@
 [
   {
     "_id": "1",
+    "imageUrl": "http://res.cloudinary.com/dif777yh9/image/upload/v1701296949/df2sbwl1efbkj12xutuc",
     "name": "Farmers' Market",
     "location": "Redmond",
     "startDate": "2023-04-10",
     "endDate": "2023-05-15",
-    "organizer_id": 1,
-    "attendance_id": [2, 3],
+    "organizer_id": "amy001@gmail.com",
+    "attendance_id": ["nihaoya@gmail.com", "v@gmail.com"],
     "price": "0.0",
     "description": "A vibrant gathering of local farmers and artisans. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante id ipsum tincidunt blandit. Curabitur eget nunc nec arcu consectetur tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel odio sit amet odio bibendum efficitur. Sed sed urna non purus sagittis tincidunt. Fusce laoreet purus nec neque congue, eu rhoncus odio cursus. Integer ullamcorper pharetra tortor, non luctus ex. Sed eget vehicula arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Donec ultrices ac odio eu tristique",
     "comments": [
       {
-        "userId": 2,
+        "userEmail": "nihaoya@gmail.com",
         "content": "Loved the fresh produce and friendly vendors!"
       },
       {
-        "userId": 3,
+        "userEmail": "v@gmail.com",
         "content": "Great variety of organic products. Will visit again!"
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "2",
+    "imageUrl": "http://res.cloudinary.com/dif777yh9/image/upload/v1701296949/qb4dvl6jyguafwjtwuax",
     "name": "Doodles' Day",
     "location": "Seattle",
     "startDate": "2023-01-10",
     "endDate": "2023-05-15",
-    "organizer_id": 1,
-    "attendance_id": [4, 5],
+    "organizer_id": "hhh@gmail.com",
+    "attendance_id": ["v@gmail.com", "hello@gmail.com"],
     "price": "0.0",
     "description": "A fun-filled day with dogs!. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante id ipsum tincidunt blandit. Curabitur eget nunc nec arcu consectetur tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel odio sit amet odio bibendum efficitur. Sed sed urna non purus sagittis tincidunt. Fusce laoreet purus nec neque congue, eu rhoncus odio cursus. Integer ullamcorper pharetra tortor, non luctus ex. Sed eget vehicula arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Donec ultrices ac odio eu tristique",
     "comments": [
       {
-        "userId": 4,
+        "userEmail": "v@gmail.com",
         "content": "My dog had so much fun, and so did I!"
       },
       {
-        "userId": 5,
+        "userEmail": "hello@gmail.com",
         "content": "The best dog-friendly event in the city."
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "3",
+    "imageUrl": "http://res.cloudinary.com/dif777yh9/image/upload/v1701296949/b28tnflteebbyvdi15ks",
     "name": "80's Rock Party",
     "location": "Kirkland",
     "startDate": "2023-01-10",
     "endDate": "2023-05-15",
-    "organizer_id": 2,
-    "attendance_id": [6, 7, 8],
+    "organizer_id": "hello@gmail.com",
+    "attendance_id": ["yuyang@gmail.com", "amy2@gmail.com", "amy001@gmail.com"],
     "price": "20.0",
     "description": "Relive the magic of the 80's with classic rock music and dance. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante id ipsum tincidunt blandit. Curabitur eget nunc nec arcu consectetur tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel odio sit amet odio bibendum efficitur. Sed sed urna non purus sagittis tincidunt. Fusce laoreet purus nec neque congue, eu rhoncus odio cursus. Integer ullamcorper pharetra tortor, non luctus ex. Sed eget vehicula arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Donec ultrices ac odio eu tristique",
     "comments": [
       {
-        "userId": 6,
+        "userEmail": "yuyang@gmail.com",
         "content": "Fantastic music and awesome crowd!"
       },
       {
-        "userId": 7,
+        "userEmail": "amy001@gmail.com",
         "content": "Took me right back to the 80s. Loved every minute!"
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "4",
+    "imageUrl": "http://res.cloudinary.com/dif777yh9/image/upload/v1701296949/ercepen8jxytbprc3mic",
     "name": "Tech Conference",
     "location": "San Francisco",
     "startDate": "2023-06-01",
     "endDate": "2023-06-03",
-    "organizer_id": 2,
-    "attendance_id": [5, 6, 7],
+    "organizer_id": "amy2@gmail.com",
+    "attendance_id": ["yuyang@gmail.com", "hhh@gmail.com", "hello@gmail.com"],
     "price": "299.99",
     "description": "An immersive experience with the latest in tech and innovation.",
     "comments": [
       {
-        "userId": 5,
+        "userEmail": "hhh@gmail.com",
         "content": "Incredible insights into the future of tech."
       },
       {
-        "userId": 6,
+        "userEmail": "hello@gmail.com",
         "content": "Networking opportunities were great, and the talks were very enlightening."
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "5",
+    "imageUrl": "http://res.cloudinary.com/dif777yh9/image/upload/v1701296949/e24igxs7hxotmspmrhrg",
     "name": "Summer Soundfest",
     "location": "Miami",
     "startDate": "2023-07-20",
     "endDate": "2023-07-22",
-    "organizer_id": 3,
-    "attendance_id": [8, 9, 10],
+    "organizer_id": "hello@gmail.com",
+    "attendance_id": ["monica222@gmail.com", "yuyang@gmail.com", "hhh@gmail.com"],
     "price": "159.99",
     "description": "A three-day music festival featuring top artists and DJs. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante id ipsum tincidunt blandit. Curabitur eget nunc nec arcu consectetur tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel odio sit amet odio bibendum efficitur. Sed sed urna non purus sagittis tincidunt. Fusce laoreet purus nec neque congue, eu rhoncus odio cursus. Integer ullamcorper pharetra tortor, non luctus ex. Sed eget vehicula arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Donec ultrices ac odio eu tristique",
     "comments": [
       {
-        "userId": 8,
+        "userEmail": "monica222@gmail.com",
         "content": "An amazing lineup and incredible atmosphere!"
       },
       {
-        "userId": 9,
+        "userEmail": "yuyang@gmail.com",
         "content": "Best music festival I've been to this year!"
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "6",
+    "imageUrl": "http://res.cloudinary.com/dif777yh9/image/upload/v1701296949/z1art3tbkqysnfmls5ic",
     "name": "Art Expo",
     "location": "New York",
     "startDate": "2023-08-15",
     "endDate": "2023-08-20",
-    "organizer_id": 4,
-    "attendance_id": [11, 12],
+    "organizer_id": "v@gmail.com",
+    "attendance_id": ["amy001@gmail.com", "nihaoya@gmail.com"],
     "price": "49.99",
     "description": "Showcasing modern art from renowned global artists. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante id ipsum tincidunt blandit. Curabitur eget nunc nec arcu consectetur tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel odio sit amet odio bibendum efficitur. Sed sed urna non purus sagittis tincidunt. Fusce laoreet purus nec neque congue, eu rhoncus odio cursus. Integer ullamcorper pharetra tortor, non luctus ex. Sed eget vehicula arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Donec ultrices ac odio eu tristique",
     "comments": [
       {
-        "userId": 11,
+        "userEmail": "amy001@gmail.com",
         "content": "Incredible art pieces and inspiring talks!"
       },
       {
-        "userId": 12,
+        "userEmail": "nihaoya@gmail.com",
         "content": "A must-visit for any art enthusiast."
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "7",
+    "imageUrl": "http://res.cloudinary.com/dif777yh9/image/upload/v1701296949/vcje2fqasg0ff1kjc3ah",
     "name": "Gourmet Delights",
     "location": "Napa Valley",
     "startDate": "2023-09-10",
     "endDate": "2023-09-12",
-    "organizer_id": 5,
-    "attendance_id": [13, 14, 15],
+    "organizer_id": "yingzi1@gmail.com",
+    "attendance_id": ["haifei10086@gmail.com", "hhh@gmail.com", "nihaoya@gmail.com"],
     "price": "89.99",
     "description": "A culinary journey with exquisite food and wine pairings. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante id ipsum tincidunt blandit. Curabitur eget nunc nec arcu consectetur tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel odio sit amet odio bibendum efficitur. Sed sed urna non purus sagittis tincidunt. Fusce laoreet purus nec neque congue, eu rhoncus odio cursus. Integer ullamcorper pharetra tortor, non luctus ex. Sed eget vehicula arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Donec ultrices ac odio eu tristique",
     "comments": [
       {
-        "userId": 13,
+        "userEmail": "hhh@gmail.com",
         "content": "The food and wine were absolutely divine!"
       },
       {
-        "userId": 14,
+        "userEmail": "nihaoya@gmail.com",
         "content": "An unforgettable gastronomic experience."
       }
-    ],
-    "registered": []
+    ]
   },
   {
     "_id": "8",
+    "imageUrl": "http://res.cloudinary.com/dif777yh9/image/upload/v1701296949/cgkbwheyp327ao2qzgj3",
     "name": "Wild Outdoors Expo",
     "location": "Colorado Springs",
     "startDate": "2023-10-05",
     "endDate": "2023-10-07",
-    "organizer_id": 6,
-    "attendance_id": [16, 17],
+    "organizer_id": "v@gmail.com",
+    "attendance_id": ["hhh@gmail.com", "nihaoya@gmail.com"],
     "price": "19.99",
     "description": "Exploring outdoor gear and adventure sports.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante id ipsum tincidunt blandit. Curabitur eget nunc nec arcu consectetur tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel odio sit amet odio bibendum efficitur. Sed sed urna non purus sagittis tincidunt. Fusce laoreet purus nec neque congue, eu rhoncus odio cursus. Integer ullamcorper pharetra tortor, non luctus ex. Sed eget vehicula arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Donec ultrices ac odio eu tristique",
     "comments": [
       {
-        "userId": 16,
+        "userEmail": "hhh@gmail.com",
         "content": "Great place to find the latest in outdoor gear."
       },
       {
-        "userId": 17,
+        "userEmail": "nihaoya@gmail.com",
         "content": "Loved the workshops and demos on adventure sports!"
       }
-    ],
-    "registered": []
+    ]
   }
 ]

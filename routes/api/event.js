@@ -1,75 +1,91 @@
-import Database from "../../Database/index.js";
+import Event from '../../models/Event.js'; 
 
 function EventRoutes(app) {
-    app.get("/api/events", (req, res) => {
-      const events = Database.events;
-      res.send(events);
-    });
+  app.get("/api/events", async (req, res) => {
+    try {
+      const events = await Event.find();
+      res.json(events);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  });
 
-    app.get("/api/events/:eid", (req, res) => {
-        const { eid } = req.params;
-        const event = Database.events
-          .find((e) => e._id === eid);
-        if (!event) {
-          res.status(404).send("event not found");
-          return;
-        }
-        res.send(event);
-    });  
-
-    app.put("/api/events/:eid", (req, res) => {
-      const { eid } = req.params;
-      const event = db.events.find((e) => e._id === eid);
-    
-      if (event) {
-        event.name = req.body.name;
-        event.location = req.body.location;
-        event.startDate = req.body.startDate;
-        event.endDate = req.body.endDate;
-        event.organizer_id = req.body.organizer_id;
-        event.attendance_id = req.body.attendance_id;
-        event.price = req.body.price;
-        event.description = req.body.description;
-        event.comments = req.body.comments;
-        event.registered = req.body.registered;
-    
-        res.sendStatus(200);
-      } else {
-        res.sendStatus(404); 
+  app.get("/api/events/:eid", async (req, res) => {
+    try {
+      const event = await Event.findById(req.params.eid);
+      if (!event) {
+        return res.status(404).send("Event not found");
       }
-    });
+      res.json(event);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  });
 
-    app.delete("/api/events/:eid", (req, res) => {
-        const { eid } = req.params;
-        Database.events = Database.events
-          .filter((e) => e._id !== eid);
-        res.sendStatus(200);
-        res.send(db.events);
-    });    
+  app.put("/api/events/edit/:eid", async (req, res) => {
+    try {
+      const event = await Event.findByIdAndUpdate(req.params.eid, req.body, { new: true });
+      if (!event) {
+        return res.status(404).send("Event not found");
+      }
+      res.json(event);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  });
 
-    app.post("/api/events", (req, res) => {
-      const event = { 
-        ...req.body,
-        _id: new Date().getTime().toString() 
-      };
-      Database.events.push(event);
-      res.send(event);
-    });
+  app.delete("/api/events/:eid", async (req, res) => {
+    try {
+      await Event.findByIdAndDelete(req.params.eid);
+      res.status(200).send("Event deleted");
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send(err.message);
+    }
+  });
 
-    app.post('/api/events/:eventId/comments', (req, res) => {
-      const { eventId } = req.params;
-      const newComment = { 
-        ...req.body,
-        _id: new Date().getTime().toString() 
-      };
-      const event = Database.events.find(event => event._id === eventId);
+  app.post("/api/events", async (req, res) => {
+    try {
+      const { _id, ...eventDataWithoutId } = req.body;
+      const newEvent = new Event(eventDataWithoutId);
+      const savedEvent = await newEvent.save();
+      res.status(201).json(savedEvent);
+    } catch (err) {
+      console.error('Error creating event:', err);
+      res.status(500).send(err.message);
+    }
+  });
+
+  app.post('/api/events/:eid/register', async (req, res) => {
+    try {
+      const event = await Event.findById(req.params.eid);
       if (!event) {
         return res.status(404).send('Event not found');
       }
-      event.comments.push(newComment);
-      res.send(newComment);
-    });
+      if (!event.attendance_id.includes(req.body.userEmail)) {
+        event.attendance_id.push(req.body.userEmail);
+        await event.save();
+      }
+      res.status(200).send('User registered successfully');
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  });
 
-    
+  app.post('/api/events/:eid/comments', async (req, res) => {
+    try {
+      const event = await Event.findById(req.params.eid);
+      if (!event) {
+        return res.status(404).send('Event not found');
+      }
+      event.comments.push(req.body); 
+      await event.save();
+      res.status(200).json({ message: 'Comment added successfully' });
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send(err.message);
+    }
+  });
 }
 export default EventRoutes;
+
