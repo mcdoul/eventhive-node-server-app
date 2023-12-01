@@ -32,6 +32,11 @@ const UserSchema = new Schema({
 		type: String,
 		required: false,
 	},
+
+    apiKey: {
+        type: String,
+        unique: true,
+      },
 });
 
 const User = model('user', UserSchema);

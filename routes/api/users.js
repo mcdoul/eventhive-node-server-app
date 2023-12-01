@@ -1,12 +1,11 @@
 import express from 'express';
-// import bcrypt from 'bcryptjs';
 import argon2 from 'argon2';
-import jwt from 'jsonwebtoken';
 import config from 'config';
 import { check, validationResult } from 'express-validator';
 import nodemailer from 'nodemailer';
 import User from '../../models/User.js'; 
 import ProfileModel from '../../models/Profile.js';
+import uuid from 'uuid';
 
 const router = express.Router();
 
@@ -49,32 +48,18 @@ router.post(
 				email,
 			});
 
-			// const salt = await bcrypt.genSalt(10);
-			// user.password = await bcrypt.hash(password, salt);
-
-
-
 			const hashedPassword = await argon2.hash(password);
 			user.password = hashedPassword;
+
+
+			const apiKey = uuid.v4();
+			user.apiKey = apiKey;
 
 			await profiles.save();
 			await user.save();
 
-			const payload = {
-				user: {
-					id: user.id,
-				},
-			};
+			res.json({ 'apiKey': user.apiKey });
 
-			jwt.sign(
-				payload,
-				config.get('jwtSecret'),
-				{ expiresIn: 360000 },
-				(err, token) => {
-					if (err) throw err;
-					res.json({ token });
-				}
-			);
 		} catch (err) {
 			console.error(err.message);
 			res.status(500).send('Server error');
@@ -109,10 +94,6 @@ router.post(
 					.json({ errors: [{ msg: 'You are not an Administrator' }] });
 			}
 
-			// const isMatch = await bcrypt.compare(password, user.password);
-
-
-
 			const isCorrect = await argon2.verify(user.password, password);
 
 
@@ -120,21 +101,8 @@ router.post(
 				return res.status(400).json({ errors: [{ msg: 'Password wrongs' }] });
 			}
 
-			const payload = {
-				user: {
-					id: user.id,
-				},
-			};
+			res.json({ 'apiKey': user.apiKey });
 
-			jwt.sign(
-				payload,
-				config.get('jwtSecret'),
-				{ expiresIn: 360000 },
-				(err, token) => {
-					if (err) throw err;
-					res.json({ token });
-				}
-			);
 		} catch (err) {
 			console.error(err.message);
 			res.status(500).send('Server error');
@@ -143,26 +111,24 @@ router.post(
 );
 
 router.get('/load', async (req, res) => {
-	const token = req.header('x-auth-token');
+	const apiKey = req.header('x-api-key');
 
-	if (!token) {
+	if (!apiKey) {
 		return res
 			.status(401)
-			.json({ msg: 'Please use token to get the user information' });
+			.json({ msg: 'Please use apiKey to get the user information' });
 	}
 
 	try {
-		const decoded = jwt.verify(token, config.get('jwtSecret'));
-		req.user = decoded.user;
 		try {
-			const user = await User.findById(req.user.id).select('-password');
+			const user = await User.findOne({ apiKey }).select('-password -apiKey');
 			res.json(user);
 		} catch (err) {
 			console.error(err.message);
 			res.status(500).send('Server Error');
 		}
 	} catch (err) {
-		res.status(401).json({ msg: 'Token wrongs' });
+		res.status(401).json({ msg: 'apiKey wrongs' });
 	}
 });
 
@@ -187,7 +153,7 @@ router.post(
 
             const validationCode = Math.floor(100000 + Math.random() * 900000);
             user.validationCode = validationCode;
-            user.validationCodeExpires = Date.now() + 900000; // Code expires in 15 minutes
+            user.validationCodeExpires = Date.now() + 900000; 
 
 
 			await user.save();
@@ -254,11 +220,6 @@ router.post(
 					.status(400)
 					.json({ errors: [{ msg: 'Invalid or expired Validation Code' }] });
 			}
-
-			// const salt = await bcrypt.genSalt(10);
-			// user.password = await bcrypt.hash(password, salt);
-
-
 			const hashedPassword = await argon2.hash(password);
 			user.password = hashedPassword;
 
