@@ -53,6 +53,17 @@ const profileSchema = new mongoose.Schema({
             required: false,
         },
     }],
+    registeredEvent: [{
+        eventId: {
+            type: String,
+            required: false,
+        },
+        eventTitle: {
+            type: String,
+            required: false,
+        },
+    }],
+
     },
     {collection: 'profile'}
     

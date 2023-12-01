@@ -38,6 +38,7 @@ router.post('/', async(req, res) => {
         res.status(500).send('Server error');
     }
 });
+
 router.put('/:email', async (req, res) => {
   try {
     const {email} = req.params;
