@@ -1,4 +1,5 @@
 import Event from '../../models/Event.js'; 
+import ProfileModel from '../../models/Profile.js';
 
 function EventRoutes(app) {
   app.get("/api/events", async (req, res) => {
@@ -59,6 +60,7 @@ function EventRoutes(app) {
   app.post('/api/events/:eid/register', async (req, res) => {
     try {
       const event = await Event.findById(req.params.eid);
+      const profile = await ProfileModel.findOne({ email: req.body.userEmail });
       if (!event) {
         return res.status(404).send('Event not found');
       }
@@ -66,6 +68,16 @@ function EventRoutes(app) {
         event.attendance_id.push(req.body.userEmail);
         await event.save();
       }
+      // deal with profile
+      const isRegistered = profile.registeredEvent.includes(req.params.eid);
+      if (!isRegistered) {
+        const registeredResult = await ProfileModel.findOneAndUpdate(
+          { email: req.body.userEmail },
+          { $addToSet: { registeredEvent: { eventId: req.params.eid, eventTitle: req.body.eventTitle } } },
+        );
+        await profile.save();
+      }
+
       res.status(200).send('User registered successfully');
     } catch (err) {
       res.status(500).send(err.message);
