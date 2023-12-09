@@ -1,6 +1,5 @@
 {
     "mongoURI": "mongodb+srv://root:root@eventhivedatabase.j1rwzcn.mongodb.net/?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken",
     "email": "harveypun.frm@gmail.com",
     "password": "phfzxjypttnfnybu"
 }
