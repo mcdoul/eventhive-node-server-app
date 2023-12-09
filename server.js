@@ -25,4 +25,4 @@ app.get('/', (req, res) => res.send('Welcome to EventHive, API is running!'));
 
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server started successfully on port ${PORT}`));
