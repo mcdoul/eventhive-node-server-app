@@ -84,6 +84,30 @@ function EventRoutes(app) {
     }
   });
 
+  app.post('/api/events/:eid/unregister', async (req, res) => {
+    try {
+      const event = await Event.findById(req.params.eid);
+      if (!event) {
+        return res.status(404).send('Event not found');
+      }
+      event.attendance_id = event.attendance_id.filter(email => email !== req.body.userEmail);
+      await event.save();
+  
+      // Deal with the user's profile
+      const profile = await ProfileModel.findOne({ email: req.body.userEmail });
+      if (profile) {
+        // Remove the event from the user's registered events
+        profile.registeredEvent = profile.registeredEvent.filter(event => event.eventId !== req.params.eid);
+        await profile.save();
+      }
+  
+      res.status(200).send('User unregistered successfully');
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  });
+  
+
   app.post('/api/events/:eid/comments', async (req, res) => {
     try {
       const event = await Event.findById(req.params.eid);
