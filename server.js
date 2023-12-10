@@ -5,14 +5,16 @@ import usersRoutes from './routes/api/users.js';
 import profileRoutes from './routes/api/profile.js';
 import postsRoutes from './routes/api/posts.js';
 import EventRoutes from './routes/api/event.js';
+import "dotenv/config";
 
 
 const app = express();
 
 connectDB();
-app.use(cors());
-
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: process.env.FRONTEND_URL,}
+    ));
 app.use(express.json({ extended: false }));
 
 app.use('/api/users', usersRoutes);
