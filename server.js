@@ -9,12 +9,8 @@ import "dotenv/config";
 
 
 const app = express();
-
+app.use(cors());
 connectDB();
-app.use(cors({
-    credentials: true,
-    origin: process.env.FRONTEND_URL,}
-    ));
 app.use(express.json({ extended: false }));
 
 app.use('/api/users', usersRoutes);
